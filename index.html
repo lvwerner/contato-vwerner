@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinicius Werner | Backend Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap');
+        :root { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .dark-card { background: #1e293b; border: 1px solid #334155; }
+        .light-card { background: #ffffff; border: 1px solid #e2e8f0; }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { darkBg: '#0f172a', darkCard: '#1e293b' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-darkBg text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const Icon = ({ name, size = 20, className = "" }) => {
+            useEffect(() => { if (window.lucide) window.lucide.createIcons(); }, [name]);
+            return <i data-lucide={name} style={{ width: size, height: size }} className={className}></i>;
+        };
+
+        const App = () => {
+            const [isDark, setIsDark] = useState(true);
+            const [scrolled, setScrolled] = useState(false);
+
+            useEffect(() => {
+                const root = window.document.documentElement;
+                isDark ? root.classList.add('dark') : root.classList.remove('dark');
+            }, [isDark]);
+
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 20);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const experiences = [
+                {
+                    company: 'Neomind',
+                    role: 'Analista de Software',
+                    period: 'Out 2025 — Presente',
+                    description: 'Evolução técnica do Fusion Platform. Especialista em persistência de dados com Hibernate e modelagem de processos complexos (BPM). Foco em performance e escalabilidade de sistemas corporativos.',
+                    tech: ['Java 11+', 'Hibernate', 'JPA', 'SQL Server', 'BPM']
+                },
+                {
+                    company: 'Grupo Orbenk',
+                    role: 'Desenvolvedor de Sistemas',
+                    period: 'Fev 2024 — Out 2025',
+                    description: 'Desenvolvimento de integrações robustas e automação de ERP. Atuação em manipulação de grandes volumes de dados e análise de performance de queries.',
+                    tech: ['Java', 'Hibernate', 'Oracle SQL', 'REST APIs', 'PHP']
+                },
+                {
+                    company: 'Clout Tecnologias',
+                    role: 'Founder & Software Developer',
+                    period: '2023 — 2024',
+                    description: 'Liderança técnica no desenvolvimento de soluções sob medida e gestão de infraestrutura inicial.',
+                    tech: ['Java', 'Node.js', 'System Design']
+                }
+            ];
+
+            return (
+                <div className="min-h-screen flex flex-col">
+                    {/* Header */}
+                    <nav className={`fixed w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-white/90 dark:bg-darkBg/90 backdrop-blur-md py-3 border-slate-200 dark:border-slate-800' : 'bg-transparent py-6 border-transparent'}`}>
+                        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+                            <span className="mono font-bold text-lg tracking-tighter">
+                                V_WERNER<span className="text-blue-500">.java</span>
+                            </span>
+                            <div className="flex items-center gap-6">
+                                <div className="hidden md:flex gap-8 text-[10px] mono font-bold uppercase tracking-[0.3em]">
+                                    <a href="#sobre" className="hover:text-blue-500 transition-colors">Stack</a>
+                                    <a href="#experiencia" className="hover:text-blue-500 transition-colors">Carreira</a>
+                                    <a href="#roadmap" className="hover:text-blue-500 transition-colors">AWS_Plan</a>
+                                </div>
+                                <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-yellow-400 hover:scale-110 transition-all">
+                                    <Icon name={isDark ? 'sun' : 'moon'} size={18} />
+                                </button>
+                            </div>
+                        </div>
+                    </nav>
+
+                    {/* Hero */}
+                    <section className="pt-44 pb-20 px-6">
+                        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                            <div className="space-y-8">
+                                <div className="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 mono text-[10px] font-bold uppercase tracking-widest">
+                                    Enterprise Java Specialist
+                                </div>
+                                <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter leading-none dark:text-white">
+                                    BACKEND <br/><span className="text-blue-500 italic">ENGINEER</span>
+                                </h1>
+                                <p className="text-lg text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed">
+                                    Especialista em ecossistema Java e Hibernate. Focado na arquitetura de sistemas corporativos de missão crítica e alta disponibilidade.
+                                </p>
+                                <div className="flex flex-wrap gap-4 pt-4">
+                                    <a href="https://github.com/lvwerner" target="_blank" className="px-8 py-4 bg-slate-900 dark:bg-white dark:text-slate-900 text-white font-bold mono text-xs uppercase tracking-widest hover:bg-blue-600 dark:hover:bg-blue-500 dark:hover:text-white transition-all shadow-lg">
+                                        Check_GitHub
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/vinicius-werner/" target="_blank" className="px-8 py-4 border-2 border-slate-300 dark:border-slate-700 font-bold mono text-xs uppercase tracking-widest hover:border-blue-500 transition-all">
+                                        LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="hidden lg:block">
+                                <div className="p-1 bg-gradient-to-br from-blue-500 to-slate-800 rounded-2xl shadow-2xl">
+                                    <div className="bg-white dark:bg-darkBg p-8 rounded-xl mono text-sm">
+                                        <p className="text-blue-500 font-bold mb-4">// Hibernate Persistence Context</p>
+                                        <p><span className="text-purple-500">@Entity</span></p>
+                                        <p><span className="text-purple-500">public class</span> <span className="text-yellow-600 dark:text-yellow-400">SoftwareEngineer</span> {"{"}</p>
+                                        <p className="pl-4">Name name = <span className="text-green-600">"Vinicius Werner"</span>;</p>
+                                        <p className="pl-4">Focus focus = Focus.BACKEND_ARCHITECTURE;</p>
+                                        <p className="pl-4">Stack stack = Stack.JAVA_HIBERNATE;</p>
+                                        <p className="pl-4">Status learning = Status.AWS_CLOUD;</p>
+                                        <p>{"}"}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Technical Roadmap */}
+                    <section id="roadmap" className="py-24 px-6 bg-slate-100 dark:bg-slate-900/30 border-y border-slate-200 dark:border-slate-800">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="mb-16">
+                                <h2 className="text-xs font-bold text-blue-500 mono uppercase tracking-[0.4em] mb-4">Plano de Carreira</h2>
+                                <h3 className="text-4xl font-black tracking-tighter uppercase">Rumo à Arquitetura Cloud</h3>
+                            </div>
+                            <div className="grid md:grid-cols-3 gap-8">
+                                {[
+                                    { title: "Sistemas Distribuídos", desc: "Estudo de mensageria e processamento assíncrono para escalar sistemas legados e novos.", icon: "layers" },
+                                    { title: "AWS Infrastructure", desc: "Foco em serviços core como EC2, RDS e S3 para migração de ambientes on-premise.", icon: "cloud" },
+                                    { title: "Observabilidade", desc: "Monitoramento de performance e logs para garantir a saúde de aplicações corporativas.", icon: "activity" }
+                                ].map((item, i) => (
+                                    <div key={i} className="p-8 bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm">
+                                        <div className="text-blue-500 mb-6"><Icon name={item.icon} size={32} /></div>
+                                        <h4 className="font-bold uppercase text-sm mb-4 tracking-wider">{item.title}</h4>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Experiência */}
+                    <section id="experiencia" className="py-24 px-6 bg-white dark:bg-darkBg">
+                        <div className="max-w-4xl mx-auto space-y-24">
+                            {experiences.map((exp, i) => (
+                                <div key={i} className="flex flex-col md:flex-row gap-8 md:gap-16 group">
+                                    <div className="md:w-1/4 mono text-[10px] font-bold text-slate-400 uppercase tracking-widest pt-2">
+                                        {exp.period}
+                                    </div>
+                                    <div className="md:w-3/4 space-y-4">
+                                        <h3 className="text-3xl font-black tracking-tighter uppercase group-hover:text-blue-500 transition-colors">
+                                            {exp.role} <span className="text-slate-300 dark:text-slate-700">/</span> {exp.company}
+                                        </h3>
+                                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed italic border-l-2 border-blue-500 pl-6">
+                                            {exp.description}
+                                        </p>
+                                        <div className="flex flex-wrap gap-2 pt-4">
+                                            {exp.tech.map(t => (
+                                                <span key={t} className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-[10px] font-bold mono border border-slate-200 dark:border-slate-700 uppercase">
+                                                    {t}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="mt-auto py-12 px-6 border-t border-slate-200 dark:border-slate-800">
+                        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+                            <div className="mono text-[10px] text-slate-400 font-bold uppercase tracking-[0.3em]">
+                                VINICIUS WERNER // JOINVILLE-SC
+                            </div>
+                            <div className="flex gap-8 mono text-[10px] font-bold uppercase tracking-widest">
+                                <a href="https://github.com/lvwerner" target="_blank" className="hover:text-blue-500">GitHub</a>
+                                <a href="https://www.linkedin.com/in/vinicius-werner/" target="_blank" className="hover:text-blue-500">LinkedIn</a>
+                                <a href="mailto:viniciushhardt@gmail.com" className="hover:text-blue-500">Email</a>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
