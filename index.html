@@ -1,213 +1,693 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinicius Werner | Backend Engineer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap');
-        :root { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
-        .dark-card { background: #1e293b; border: 1px solid #334155; }
-        .light-card { background: #ffffff; border: 1px solid #e2e8f0; }
-    </style>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: { darkBg: '#0f172a', darkCard: '#1e293b' }
-                }
-            }
-        }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vinicius Werner | Desenvolvedor Java Backend em Joinville, SC</title>
+<meta name="description" content="Desenvolvedor Java backend em Joinville (SC). Integração de sistemas via REST e SOAP, dados em SQL Server e Oracle, e sustentação de aplicações corporativas em produção.">
+<meta name="author" content="Vinicius Werner">
+<meta name="theme-color" content="#16324F">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vinicius Werner | Desenvolvedor Java Backend">
+<meta property="og:description" content="Integração de sistemas, dados e aplicações corporativas em produção. Veja projetos, experiência e certificações.">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316324F'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='28' font-weight='700' text-anchor='middle' fill='%239AD0EC'%3EVW%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<script>
+  // Aplica o tema antes da pintura para evitar flash
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Vinicius Werner",
+  "jobTitle": "Analista de Software",
+  "worksFor": { "@type": "Organization", "name": "Neomind" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Joinville", "addressRegion": "SC", "addressCountry": "BR" },
+  "email": "mailto:viniciushhardt@gmail.com",
+  "sameAs": [
+    "https://github.com/lvwerner",
+    "https://www.linkedin.com/in/vinicius-werner/"
+  ],
+  "knowsAbout": ["Java", "Hibernate", "SQL Server", "Integração de sistemas", "REST", "SOAP"]
+}
+</script>
+
+<style>
+  :root {
+    --paper: #F4F7FA;
+    --surface: #FFFFFF;
+    --ink: #0E2238;
+    --muted: #46596D;
+    --line: #D3DEE9;
+    --brand: #16324F;
+    --sky: #9AD0EC;
+    --link: #1B63A0;
+    --btn-bg: #16324F;
+    --btn-fg: #FFFFFF;
+    --btn-hover: #0E2238;
+    --tint: #E6EFF7;
+    --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+    --font-body: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+    --wrap: 1120px;
+    --radius: 10px;
+  }
+  [data-theme="dark"] {
+    --paper: #0A1828;
+    --surface: #10253A;
+    --ink: #E8F0F8;
+    --muted: #A3B6C9;
+    --line: #234059;
+    --brand: #9AD0EC;
+    --sky: #9AD0EC;
+    --link: #8CC6EA;
+    --btn-bg: #9AD0EC;
+    --btn-fg: #0A1828;
+    --btn-hover: #BCE0F4;
+    --tint: #12304A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color .25s ease, color .25s ease;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--link); text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; margin: 0; }
+  p { margin: 0 0 1em; }
+  ul, ol { margin: 0; padding: 0; list-style: none; }
+
+  :focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 28px; }
+  .skip {
+    position: absolute; left: 16px; top: -60px; z-index: 100;
+    background: var(--btn-bg); color: var(--btn-fg); padding: 10px 16px; border-radius: 6px; text-decoration: none;
+  }
+  .skip:focus { top: 12px; }
+
+  /* Botões */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font: 600 15px/1 var(--font-body);
+    padding: 15px 22px; border-radius: 8px;
+    text-decoration: none; cursor: pointer;
+    border: 1.5px solid var(--btn-bg);
+    background: var(--btn-bg); color: var(--btn-fg);
+    transition: background-color .18s ease, border-color .18s ease, color .18s ease;
+  }
+  .btn:hover { background: var(--btn-hover); border-color: var(--btn-hover); text-decoration: none; }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn.ghost:hover { border-color: var(--ink); background: transparent; }
+  .btn.small { padding: 11px 16px; font-size: 14px; }
+
+  /* Navegação */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 20px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); font: 700 18px var(--font-display); letter-spacing: -0.01em; }
+  .brand-mark {
+    width: 34px; height: 34px; border-radius: 8px; background: #16324F; color: #9AD0EC;
+    display: grid; place-items: center; font: 700 14px var(--font-display); letter-spacing: 0;
+  }
+  .nav-links { display: flex; align-items: center; gap: 26px; }
+  .nav-links a.link { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; padding: 6px 0; border-bottom: 2px solid transparent; }
+  .nav-links a.link:hover { color: var(--ink); }
+  .nav-links a.link[aria-current="true"] { color: var(--ink); border-bottom-color: var(--sky); }
+  .icon-btn {
+    width: 40px; height: 40px; display: grid; place-items: center; border-radius: 8px;
+    border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer;
+  }
+  .icon-btn:hover { border-color: var(--ink); }
+  .icon-btn svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .menu-btn { display: none; }
+  .theme-sun { display: none; }
+  [data-theme="dark"] .theme-sun { display: block; }
+  [data-theme="dark"] .theme-moon { display: none; }
+
+  /* Hero */
+  .hero { padding: 88px 0 96px; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.8fr); gap: 72px; align-items: start; }
+  .hero h1 { font-size: clamp(2.4rem, 5.2vw, 4.25rem); max-width: 17ch; }
+  .hero .lead { font-size: 1.2rem; color: var(--muted); max-width: 54ch; margin: 28px 0 36px; line-height: 1.6; }
+  .hero .lead strong { color: var(--ink); font-weight: 600; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  .profile { border-top: 3px solid var(--sky); padding-top: 24px; }
+  .avatar {
+    width: 132px; height: 132px; border-radius: 14px; object-fit: cover;
+    background: var(--brand); border: 1px solid var(--line); margin-bottom: 24px;
+  }
+  .facts { margin: 0; }
+  .facts div { padding: 13px 0; border-bottom: 1px solid var(--line); }
+  .facts dt { font-size: 13.5px; color: var(--muted); margin-bottom: 2px; }
+  .facts dd { margin: 0; font-weight: 500; }
+
+  /* Entrada: um único momento orquestrado no carregamento */
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .hero [data-in] { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 110ms); }
+
+  /* Seções */
+  .sec { padding: 96px 0; border-top: 1px solid var(--line); }
+  .sec.alt { background: var(--surface); }
+  .sec-grid { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 72px; }
+  .sec-head { position: sticky; top: 108px; align-self: start; }
+  .sec-head h2 { font-size: clamp(1.7rem, 3vw, 2.25rem); margin-bottom: 16px; }
+  .sec-head p { color: var(--muted); font-size: 16px; margin: 0; }
+
+  /* Listas com divisórias (serviços, stack, formação) */
+  .rows > li, .rows > div { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 32px; padding: 26px 0; border-top: 1px solid var(--line); }
+  .rows > li:last-child, .rows > div:last-child { border-bottom: 1px solid var(--line); }
+  .rows h3, .rows dt { font-size: 1.15rem; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.01em; }
+  .rows p, .rows dd { margin: 0; color: var(--muted); }
+  .rows dd { color: var(--ink); }
+
+  /* Projeto em destaque */
+  .case h3 { font-size: clamp(1.6rem, 2.8vw, 2.1rem); }
+  .case .client { color: var(--muted); font-size: 1.05rem; margin: 8px 0 32px; }
+  .case h4 { font: 600 16px var(--font-body); margin: 0 0 6px; }
+  .case .block { margin-bottom: 26px; max-width: 62ch; }
+  .case .block p { color: var(--muted); margin: 0; }
+  .flow {
+    display: flex; align-items: stretch; margin: 36px 0 34px; padding: 26px; border-radius: var(--radius);
+    background: var(--tint); border: 1px solid var(--line);
+  }
+  .flow-step { flex: 1; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; }
+  .flow-step b { display: block; font: 700 15px var(--font-display); margin-bottom: 4px; }
+  .flow-step span { font-size: 14px; color: var(--muted); line-height: 1.45; display: block; }
+  .flow-link { flex: 0 0 34px; position: relative; align-self: center; height: 2px; background: var(--brand); }
+  .flow-link::after {
+    content: ""; position: absolute; right: -1px; top: -4px; width: 8px; height: 8px;
+    border-top: 2px solid var(--brand); border-right: 2px solid var(--brand); transform: rotate(45deg);
+  }
+  .case-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--muted); font-size: 15px; margin-bottom: 28px; }
+  .case-meta li { padding-left: 18px; position: relative; }
+  .case-meta li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 8px; height: 8px; border-radius: 50%; background: var(--sky); }
+
+  /* Outros projetos */
+  .repos { margin-top: 56px; }
+  .repos h3 { font-size: 1.3rem; margin-bottom: 6px; }
+  .repos > p { color: var(--muted); margin-bottom: 18px; }
+  .repo { display: grid; grid-template-columns: 200px minmax(0, 1fr) auto; gap: 24px; align-items: baseline; padding: 20px 0; border-top: 1px solid var(--line); }
+  .repo:last-of-type { border-bottom: 1px solid var(--line); }
+  .repo a.name { font: 700 1.05rem var(--font-display); color: var(--ink); text-decoration: none; }
+  .repo a.name:hover { color: var(--link); text-decoration: underline; }
+  .repo p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .tag { font-size: 13px; color: var(--muted); border: 1px solid var(--line); padding: 3px 10px; border-radius: 99px; white-space: nowrap; }
+
+  /* Experiência */
+  .job { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 32px; padding: 30px 0; border-top: 1px solid var(--line); }
+  .job:last-child { border-bottom: 1px solid var(--line); }
+  .job time { color: var(--muted); font-size: 15px; padding-top: 5px; }
+  .job h3 { font-size: 1.35rem; }
+  .job .where { color: var(--muted); margin: 4px 0 14px; font-weight: 500; }
+  .job p { max-width: 60ch; margin-bottom: 16px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips li { font-size: 13.5px; font-weight: 500; padding: 4px 12px; border-radius: 6px; background: var(--tint); color: var(--ink); }
+
+  /* Formação */
+  .cert { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 24px; padding: 22px 0; border-top: 1px solid var(--line); }
+  .cert:last-of-type { border-bottom: 1px solid var(--line); }
+  .cert h3 { font-size: 1.1rem; }
+  .cert .by { color: var(--muted); font-size: 15px; margin: 2px 0 0; }
+  .cert .right { text-align: right; font-size: 15px; color: var(--muted); }
+  .cert .right a { display: inline-block; margin-top: 2px; font-weight: 500; }
+  .note { margin-top: 18px; font-size: 14.5px; color: var(--muted); }
+
+  /* Processo (sequência real, por isso numerada) */
+  .steps { counter-reset: s; }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding: 24px 0; border-top: 1px solid var(--line); }
+  .steps li:last-child { border-bottom: 1px solid var(--line); }
+  .steps li::before { content: counter(s); font: 700 1.6rem var(--font-display); color: var(--link); line-height: 1.1; }
+  .steps h3 { font-size: 1.15rem; margin-bottom: 4px; }
+  .steps p { margin: 0; color: var(--muted); max-width: 58ch; }
+
+  /* Contato */
+  .contact { background: var(--brand); color: #fff; border-top: 0; }
+  [data-theme="dark"] .contact { background: var(--surface); color: var(--ink); border-top: 1px solid var(--line); }
+  .contact h2 { font-size: clamp(2rem, 4.4vw, 3.2rem); max-width: 18ch; }
+  .contact p { max-width: 54ch; font-size: 1.15rem; margin: 22px 0 34px; color: #D5E4F1; }
+  [data-theme="dark"] .contact p { color: var(--muted); }
+  .contact .btn { background: #9AD0EC; color: #0E2238; border-color: #9AD0EC; }
+  .contact .btn:hover { background: #BCE0F4; border-color: #BCE0F4; }
+  .contact .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.4); }
+  .contact .btn.ghost:hover { border-color: #fff; background: transparent; }
+  [data-theme="dark"] .contact .btn.ghost { color: var(--ink); border-color: var(--line); }
+  [data-theme="dark"] .contact .btn.ghost:hover { border-color: var(--ink); }
+  .contact :focus-visible { outline-color: #9AD0EC; }
+  .mail-line { margin-top: 26px; font-size: 15px; color: #C3D6E7; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  [data-theme="dark"] .mail-line { color: var(--muted); }
+  .copy { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+  footer { padding: 28px 0; font-size: 14.5px; color: var(--muted); border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* Responsivo */
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero h1 { max-width: 16ch; }
+    .profile { display: grid; grid-template-columns: 132px 1fr; gap: 0 28px; align-items: start; }
+    .avatar { margin-bottom: 0; }
+    .sec-grid { grid-template-columns: 1fr; gap: 36px; }
+    .sec-head { position: static; }
+    .sec { padding: 72px 0; }
+  }
+  @media (max-width: 760px) {
+    body { font-size: 16.5px; }
+    .wrap { padding: 0 20px; }
+    .menu-btn { display: grid; }
+    .nav-links {
+      position: absolute; left: 0; right: 0; top: 68px; flex-direction: column; align-items: stretch; gap: 0;
+      background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px 20px 18px; display: none;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a.link { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .nav-links .btn { margin-top: 14px; justify-content: center; }
+    .hero { padding: 56px 0 72px; }
+    .profile { grid-template-columns: 1fr; }
+    .avatar { margin-bottom: 20px; width: 112px; height: 112px; }
+    .rows > li, .rows > div { grid-template-columns: 1fr; gap: 6px; }
+    .job { grid-template-columns: 1fr; gap: 6px; }
+    .job time { padding-top: 0; }
+    .repo { grid-template-columns: 1fr; gap: 6px; }
+    .cert { grid-template-columns: 1fr; }
+    .cert .right { text-align: left; }
+    .flow { flex-direction: column; padding: 18px; }
+    .flow-link { flex: 0 0 30px; width: 2px; height: 30px; align-self: center; }
+    .flow-link::after { right: -4px; top: auto; bottom: -1px; transform: rotate(135deg); }
+    .btn { width: 100%; justify-content: center; }
+    .btn.small { width: auto; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero [data-in] { animation: none; }
+    * { transition: none !important; }
+  }
+</style>
 </head>
-<body class="bg-slate-50 dark:bg-darkBg text-slate-900 dark:text-slate-100 transition-colors duration-300">
-    <div id="root"></div>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
-        const Icon = ({ name, size = 20, className = "" }) => {
-            useEffect(() => { if (window.lucide) window.lucide.createIcons(); }, [name]);
-            return <i data-lucide={name} style={{ width: size, height: size }} className={className}></i>;
-        };
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#topo" aria-label="Vinicius Werner, início">
+      <span class="brand-mark" aria-hidden="true">VW</span>
+      Vinicius Werner
+    </a>
+    <nav class="nav-links" id="menu" aria-label="Principal">
+      <a class="link" href="#servicos">Serviços</a>
+      <a class="link" href="#projeto">Projeto</a>
+      <a class="link" href="#experiencia">Experiência</a>
+      <a class="link" href="#formacao">Formação</a>
+      <a class="link" href="#contato">Contato</a>
+      <a class="btn small" href="mailto:viniciushhardt@gmail.com?subject=Contato%20pelo%20portf%C3%B3lio">Falar comigo</a>
+    </nav>
+    <div style="display:flex;gap:10px;align-items:center">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Alternar tema claro e escuro">
+        <svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
 
-        const App = () => {
-            const [isDark, setIsDark] = useState(true);
-            const [scrolled, setScrolled] = useState(false);
+<main id="conteudo">
 
-            useEffect(() => {
-                const root = window.document.documentElement;
-                isDark ? root.classList.add('dark') : root.classList.remove('dark');
-            }, [isDark]);
+  <!-- Hero -->
+  <section class="hero" id="topo">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 data-in style="--i:0">Backend em Java para sistemas que não podem parar.</h1>
+        <p class="lead" data-in style="--i:1">
+          Sou Vinicius Werner, desenvolvedor em Joinville (SC). <strong>Integro sistemas via REST e SOAP, organizo dados em SQL Server e Oracle e mantenho aplicações corporativas em produção.</strong>
+        </p>
+        <div class="cta-row" data-in style="--i:2">
+          <a class="btn" href="#projeto">Ver um projeto real</a>
+          <a class="btn ghost" href="mailto:viniciushhardt@gmail.com?subject=Contato%20pelo%20portf%C3%B3lio">Conversar sobre seu projeto</a>
+        </div>
+      </div>
 
-            useEffect(() => {
-                const handleScroll = () => setScrolled(window.scrollY > 20);
-                window.addEventListener('scroll', handleScroll);
-                return () => window.removeEventListener('scroll', handleScroll);
-            }, []);
+      <aside class="profile" data-in style="--i:3" aria-label="Resumo profissional">
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/118356029?v=4" width="132" height="132" alt="Foto de Vinicius Werner" onerror="this.style.display='none'">
+        <dl class="facts">
+          <div><dt>Atuação atual</dt><dd>Analista de Software na Neomind</dd></div>
+          <div><dt>Especialidade</dt><dd>Java, Hibernate e SQL Server</dd></div>
+          <div><dt>Local</dt><dd>Joinville, Santa Catarina</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
 
-            const experiences = [
-                {
-                    company: 'Neomind',
-                    role: 'Analista de Software',
-                    period: 'Out 2025 — Presente',
-                    description: 'Evolução técnica do Fusion Platform. Especialista em persistência de dados com Hibernate e modelagem de processos complexos (BPM). Foco em performance e escalabilidade de sistemas corporativos.',
-                    tech: ['Java 11+', 'Hibernate', 'JPA', 'SQL Server', 'BPM']
-                },
-                {
-                    company: 'Grupo Orbenk',
-                    role: 'Desenvolvedor de Sistemas',
-                    period: 'Fev 2024 — Out 2025',
-                    description: 'Desenvolvimento de integrações robustas e automação de ERP. Atuação em manipulação de grandes volumes de dados e análise de performance de queries.',
-                    tech: ['Java', 'Hibernate', 'Oracle SQL', 'REST APIs', 'PHP']
-                },
-                {
-                    company: 'Clout Tecnologias',
-                    role: 'Founder & Software Developer',
-                    period: '2023 — 2024',
-                    description: 'Liderança técnica no desenvolvimento de soluções sob medida e gestão de infraestrutura inicial.',
-                    tech: ['Java', 'Node.js', 'System Design']
-                }
-            ];
+  <!-- Serviços -->
+  <section class="sec alt" id="servicos">
+    <div class="wrap sec-grid">
+      <header class="sec-head">
+        <h2>O que posso fazer pelo seu projeto</h2>
+        <p>Trabalho no backend, nos dados e nas integrações, onde a maior parte dos problemas de sistemas corporativos aparece.</p>
+      </header>
+      <ul class="rows">
+        <li>
+          <h3>Integração entre sistemas</h3>
+          <p>APIs REST, SOAP e WebServices para conectar ERP, sistemas internos e serviços de terceiros, com validação dos dados trocados entre eles.</p>
+        </li>
+        <li>
+          <h3>Sistemas web sob medida</h3>
+          <p>Aplicações em Java, PHP e JavaScript com autenticação, controle de acesso e regras de negócio definidas junto com quem vai usar.</p>
+        </li>
+        <li>
+          <h3>Dados, consultas e relatórios</h3>
+          <p>Modelagem e consultas em SQL Server e Oracle, análise de performance de queries e scripts de correção de dados.</p>
+        </li>
+        <li>
+          <h3>Sustentação e evolução</h3>
+          <p>Manutenção de sistemas em produção, investigação de incidentes e evolução de funcionalidades já existentes.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-            return (
-                <div className="min-h-screen flex flex-col">
-                    {/* Header */}
-                    <nav className={`fixed w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-white/90 dark:bg-darkBg/90 backdrop-blur-md py-3 border-slate-200 dark:border-slate-800' : 'bg-transparent py-6 border-transparent'}`}>
-                        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-                            <span className="mono font-bold text-lg tracking-tighter">
-                                V_WERNER<span className="text-blue-500">.java</span>
-                            </span>
-                            <div className="flex items-center gap-6">
-                                <div className="hidden md:flex gap-8 text-[10px] mono font-bold uppercase tracking-[0.3em]">
-                                    <a href="#sobre" className="hover:text-blue-500 transition-colors">Stack</a>
-                                    <a href="#experiencia" className="hover:text-blue-500 transition-colors">Carreira</a>
-                                    <a href="#roadmap" className="hover:text-blue-500 transition-colors">AWS_Plan</a>
-                                </div>
-                                <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-yellow-400 hover:scale-110 transition-all">
-                                    <Icon name={isDark ? 'sun' : 'moon'} size={18} />
-                                </button>
-                            </div>
-                        </div>
-                    </nav>
+  <!-- Projeto em destaque -->
+  <section class="sec" id="projeto">
+    <div class="wrap sec-grid">
+      <header class="sec-head">
+        <h2>Projeto em destaque</h2>
+        <p>Um sistema criado para a necessidade real de uma instituição, e que você pode abrir e testar.</p>
+      </header>
 
-                    {/* Hero */}
-                    <section className="pt-44 pb-20 px-6">
-                        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-                            <div className="space-y-8">
-                                <div className="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 mono text-[10px] font-bold uppercase tracking-widest">
-                                    Enterprise Java Specialist
-                                </div>
-                                <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter leading-none dark:text-white">
-                                    BACKEND <br/><span className="text-blue-500 italic">ENGINEER</span>
-                                </h1>
-                                <p className="text-lg text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed">
-                                    Especialista em ecossistema Java e Hibernate. Focado na arquitetura de sistemas corporativos de missão crítica e alta disponibilidade.
-                                </p>
-                                <div className="flex flex-wrap gap-4 pt-4">
-                                    <a href="https://github.com/lvwerner" target="_blank" className="px-8 py-4 bg-slate-900 dark:bg-white dark:text-slate-900 text-white font-bold mono text-xs uppercase tracking-widest hover:bg-blue-600 dark:hover:bg-blue-500 dark:hover:text-white transition-all shadow-lg">
-                                        Check_GitHub
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/vinicius-werner/" target="_blank" className="px-8 py-4 border-2 border-slate-300 dark:border-slate-700 font-bold mono text-xs uppercase tracking-widest hover:border-blue-500 transition-all">
-                                        LinkedIn
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="hidden lg:block">
-                                <div className="p-1 bg-gradient-to-br from-blue-500 to-slate-800 rounded-2xl shadow-2xl">
-                                    <div className="bg-white dark:bg-darkBg p-8 rounded-xl mono text-sm">
-                                        <p className="text-blue-500 font-bold mb-4">// Hibernate Persistence Context</p>
-                                        <p><span className="text-purple-500">@Entity</span></p>
-                                        <p><span className="text-purple-500">public class</span> <span className="text-yellow-600 dark:text-yellow-400">SoftwareEngineer</span> {"{"}</p>
-                                        <p className="pl-4">Name name = <span className="text-green-600">"Vinicius Werner"</span>;</p>
-                                        <p className="pl-4">Focus focus = Focus.BACKEND_ARCHITECTURE;</p>
-                                        <p className="pl-4">Stack stack = Stack.JAVA_HIBERNATE;</p>
-                                        <p className="pl-4">Status learning = Status.AWS_CLOUD;</p>
-                                        <p>{"}"}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+      <article class="case">
+        <h3>Sistema de Gestão de Ocorrências</h3>
+        <p class="client">Bombeiros Voluntários de Guaramirim (SC)</p>
 
-                    {/* Technical Roadmap */}
-                    <section id="roadmap" className="py-24 px-6 bg-slate-100 dark:bg-slate-900/30 border-y border-slate-200 dark:border-slate-800">
-                        <div className="max-w-6xl mx-auto">
-                            <div className="mb-16">
-                                <h2 className="text-xs font-bold text-blue-500 mono uppercase tracking-[0.4em] mb-4">Plano de Carreira</h2>
-                                <h3 className="text-4xl font-black tracking-tighter uppercase">Rumo à Arquitetura Cloud</h3>
-                            </div>
-                            <div className="grid md:grid-cols-3 gap-8">
-                                {[
-                                    { title: "Sistemas Distribuídos", desc: "Estudo de mensageria e processamento assíncrono para escalar sistemas legados e novos.", icon: "layers" },
-                                    { title: "AWS Infrastructure", desc: "Foco em serviços core como EC2, RDS e S3 para migração de ambientes on-premise.", icon: "cloud" },
-                                    { title: "Observabilidade", desc: "Monitoramento de performance e logs para garantir a saúde de aplicações corporativas.", icon: "activity" }
-                                ].map((item, i) => (
-                                    <div key={i} className="p-8 bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm">
-                                        <div className="text-blue-500 mb-6"><Icon name={item.icon} size={32} /></div>
-                                        <h4 className="font-bold uppercase text-sm mb-4 tracking-wider">{item.title}</h4>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
+        <div class="block">
+          <h4>O problema</h4>
+          <p>As ocorrências eram registradas em fichas de papel. Isso dificultava organizar, guardar e consultar o histórico.</p>
+        </div>
+        <div class="block">
+          <h4>A solução</h4>
+          <p>Uma aplicação web que centraliza o cadastro e a consulta das ocorrências, com login de usuários e controle de acesso às funcionalidades.</p>
+        </div>
 
-                    {/* Experiência */}
-                    <section id="experiencia" className="py-24 px-6 bg-white dark:bg-darkBg">
-                        <div className="max-w-4xl mx-auto space-y-24">
-                            {experiences.map((exp, i) => (
-                                <div key={i} className="flex flex-col md:flex-row gap-8 md:gap-16 group">
-                                    <div className="md:w-1/4 mono text-[10px] font-bold text-slate-400 uppercase tracking-widest pt-2">
-                                        {exp.period}
-                                    </div>
-                                    <div className="md:w-3/4 space-y-4">
-                                        <h3 className="text-3xl font-black tracking-tighter uppercase group-hover:text-blue-500 transition-colors">
-                                            {exp.role} <span className="text-slate-300 dark:text-slate-700">/</span> {exp.company}
-                                        </h3>
-                                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed italic border-l-2 border-blue-500 pl-6">
-                                            {exp.description}
-                                        </p>
-                                        <div className="flex flex-wrap gap-2 pt-4">
-                                            {exp.tech.map(t => (
-                                                <span key={t} className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-[10px] font-bold mono border border-slate-200 dark:border-slate-700 uppercase">
-                                                    {t}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
+        <div class="flow" role="img" aria-label="Arquitetura: interface web em HTML, CSS e JavaScript, aplicação em PHP e banco de dados relacional">
+          <div class="flow-step"><b>Interface web</b><span>HTML, CSS e JavaScript</span></div>
+          <div class="flow-link"></div>
+          <div class="flow-step"><b>Aplicação</b><span>PHP: autenticação e regras de negócio</span></div>
+          <div class="flow-link"></div>
+          <div class="flow-step"><b>Banco de dados</b><span>Persistência e consulta dos registros</span></div>
+        </div>
 
-                    {/* Footer */}
-                    <footer className="mt-auto py-12 px-6 border-t border-slate-200 dark:border-slate-800">
-                        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-                            <div className="mono text-[10px] text-slate-400 font-bold uppercase tracking-[0.3em]">
-                                VINICIUS WERNER // JOINVILLE-SC
-                            </div>
-                            <div className="flex gap-8 mono text-[10px] font-bold uppercase tracking-widest">
-                                <a href="https://github.com/lvwerner" target="_blank" className="hover:text-blue-500">GitHub</a>
-                                <a href="https://www.linkedin.com/in/vinicius-werner/" target="_blank" className="hover:text-blue-500">LinkedIn</a>
-                                <a href="mailto:viniciushhardt@gmail.com" className="hover:text-blue-500">Email</a>
-                            </div>
-                        </div>
-                    </footer>
-                </div>
-            );
-        };
+        <ul class="case-meta">
+          <li>Projeto de conclusão do curso técnico no SENAI</li>
+          <li>Desenvolvido em dupla com João Rosera</li>
+          <li>Código aberto, com 56 commits</li>
+        </ul>
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+        <div class="cta-row">
+          <a class="btn" href="https://projeto2-smoky.vercel.app" target="_blank" rel="noopener">Abrir demonstração</a>
+          <a class="btn ghost" href="https://github.com/lvwerner/projeto2" target="_blank" rel="noopener">Ver código no GitHub</a>
+        </div>
+
+        <div class="repos">
+          <h3>Estudo e prática no GitHub</h3>
+          <p>Repositórios que mostram como venho aprendendo e consolidando a base técnica.</p>
+
+          <div class="repo">
+            <a class="name" href="https://github.com/lvwerner/learningJava" target="_blank" rel="noopener">learningJava</a>
+            <p>Programação orientada a objetos em Java, com JDBC, padrão DAO, herança e diagramas de classes.</p>
+            <span class="tag">Java</span>
+          </div>
+          <div class="repo">
+            <a class="name" href="https://github.com/lvwerner/CC50" target="_blank" rel="noopener">CC50</a>
+            <p>Curso de introdução à ciência da computação de Harvard.</p>
+            <span class="tag">Fundamentos</span>
+          </div>
+          <div class="repo">
+            <a class="name" href="https://github.com/lvwerner/Fundamentos-de-IA" target="_blank" rel="noopener">Fundamentos-de-IA</a>
+            <p>Notebooks de estudo sobre fundamentos de inteligência artificial.</p>
+            <span class="tag">Jupyter Notebook</span>
+          </div>
+          <p class="note">O trabalho profissional na Neomind e na Orbenk é de uso interno das empresas e não está público. Veja todos os repositórios em <a href="https://github.com/lvwerner?tab=repositories" target="_blank" rel="noopener">github.com/lvwerner</a>.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Experiência -->
+  <section class="sec alt" id="experiencia">
+    <div class="wrap sec-grid">
+      <header class="sec-head">
+        <h2>Experiência profissional</h2>
+        <p>Sistemas corporativos, integrações e dados, do primeiro negócio próprio até a plataforma que mantenho hoje.</p>
+      </header>
+      <div>
+        <article class="job">
+          <time>Out 2025 até hoje</time>
+          <div>
+            <h3>Analista de Software</h3>
+            <p class="where">Neomind</p>
+            <p>Evolução técnica do Fusion Platform. Atuo com persistência de dados em Hibernate e com a modelagem de processos complexos (BPM), com foco em performance e escalabilidade de sistemas corporativos.</p>
+            <ul class="chips"><li>Java 11+</li><li>Hibernate</li><li>JPA</li><li>SQL Server</li><li>BPM</li></ul>
+          </div>
+        </article>
+        <article class="job">
+          <time>Fev 2024 a Out 2025</time>
+          <div>
+            <h3>Desenvolvedor de Sistemas</h3>
+            <p class="where">Grupo Orbenk</p>
+            <p>Desenvolvimento de integrações e automação de ERP. Trabalho com grandes volumes de dados e análise de performance de queries.</p>
+            <ul class="chips"><li>Java</li><li>Hibernate</li><li>Oracle SQL</li><li>REST APIs</li><li>PHP</li></ul>
+          </div>
+        </article>
+        <article class="job">
+          <time>2023 a 2024</time>
+          <div>
+            <h3>Fundador e Desenvolvedor</h3>
+            <p class="where">Clout Tecnologias</p>
+            <p>Liderança técnica no desenvolvimento de soluções sob medida e gestão da infraestrutura inicial da empresa.</p>
+            <ul class="chips"><li>Java</li><li>Node.js</li><li>Design de sistemas</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section class="sec" id="stack">
+    <div class="wrap sec-grid">
+      <header class="sec-head">
+        <h2>Tecnologias do dia a dia</h2>
+        <p>O que uso no trabalho, e o que estou aprofundando.</p>
+      </header>
+      <dl class="rows">
+        <div><dt>Linguagens</dt><dd>Java, JavaScript, Python, PHP e SQL</dd></div>
+        <div><dt>Persistência e dados</dt><dd>Hibernate, JPA, SQL Server, Oracle e DBeaver</dd></div>
+        <div><dt>Integração e testes de API</dt><dd>REST, SOAP, WebServices, Postman e SoapUI</dd></div>
+        <div><dt>Ferramentas</dt><dd>IntelliJ IDEA, Git, GitHub, GitLab e Claude</dd></div>
+        <div><dt>Em aprofundamento</dt><dd>Docker, CI/CD, AWS e segurança de aplicações (OWASP Top 10)</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Formação -->
+  <section class="sec alt" id="formacao">
+    <div class="wrap sec-grid">
+      <header class="sec-head">
+        <h2>Formação e certificações</h2>
+        <p>Todos os certificados abaixo podem ser conferidos no site de quem os emitiu.</p>
+      </header>
+      <div>
+        <div class="cert">
+          <div>
+            <h3>Java Development</h3>
+            <p class="by">FIAP, 60 horas, concluído em 01/09/2026</p>
+          </div>
+          <div class="right"><a href="https://on.fiap.com.br/validar-certificado/" target="_blank" rel="noopener">Validar certificado</a><br>Chave 0437ACAE69B90920DABEC89E5C9B5235</div>
+        </div>
+        <div class="cert">
+          <div>
+            <h3>Gestão de Infraestrutura de TI</h3>
+            <p class="by">FIAP, 20 horas, concluído em 30/09/2026</p>
+          </div>
+          <div class="right"><a href="https://on.fiap.com.br/validar-certificado/" target="_blank" rel="noopener">Validar certificado</a><br>Chave 924F38494FE3F4A801B4B40D5D5C9394</div>
+        </div>
+        <div class="cert">
+          <div>
+            <h3>DevOps &amp; Agile Culture</h3>
+            <p class="by">FIAP, 60 horas, concluído em 03/10/2026</p>
+          </div>
+          <div class="right"><a href="https://on.fiap.com.br/validar-certificado/" target="_blank" rel="noopener">Validar certificado</a><br>Chave E6C6EB084788CC473CCD32F1DBF2D899</div>
+        </div>
+        <div class="cert">
+          <div>
+            <h3>Claude 101</h3>
+            <p class="by">Anthropic Academy</p>
+          </div>
+          <div class="right"><a href="https://academy.claude.com/verify/545b32c8b24dccac98f94d1c3d30c67d" target="_blank" rel="noopener">Verificar certificado</a></div>
+        </div>
+        <div class="cert">
+          <div>
+            <h3>Curso técnico</h3>
+            <p class="by">SENAI, com projeto de conclusão apresentado acima</p>
+          </div>
+          <div class="right"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Processo -->
+  <section class="sec" id="processo">
+    <div class="wrap sec-grid">
+      <header class="sec-head">
+        <h2>Como trabalho com clientes</h2>
+        <p>Um caminho simples, para você saber o que esperar em cada etapa.</p>
+      </header>
+      <ol class="steps">
+        <li>
+          <div>
+            <h3>Entender o problema</h3>
+            <p>Começo conversando com quem usa o sistema, para entender o processo atual e o que precisa mudar.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Combinar escopo e prazos</h3>
+            <p>Defino com você o que será entregue e em que ordem, antes de escrever código.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Entregar em etapas</h3>
+            <p>O código fica versionado em Git e as funcionalidades chegam em partes, para você validar ao longo do caminho.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Documentar e acompanhar</h3>
+            <p>Deixo o sistema documentado e continuo disponível para ajustes depois da entrega.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section class="sec contact" id="contato">
+    <div class="wrap">
+      <h2>Vamos conversar sobre o seu projeto.</h2>
+      <p>Conte qual sistema precisa ser integrado, corrigido ou criado. Respondo por e-mail ou pelo LinkedIn.</p>
+      <div class="cta-row">
+        <a class="btn" href="mailto:viniciushhardt@gmail.com?subject=Contato%20pelo%20portf%C3%B3lio">Enviar e-mail</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/vinicius-werner/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/lvwerner" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="mail-line">
+        <span>viniciushhardt@gmail.com</span>
+        <button class="copy" id="copyBtn" type="button">Copiar e-mail</button>
+        <span class="sr" id="copyStatus" role="status" aria-live="polite"></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Vinicius Werner. Joinville, Santa Catarina.</span>
+    <a href="#topo">Voltar ao topo</a>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+
+    // Tema
+    var themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', next === 'dark' ? '#0A1828' : '#16324F');
+    });
+
+    // Menu mobile
+    var menuBtn = document.getElementById('menuBtn');
+    var menu = document.getElementById('menu');
+    function setMenu(open) {
+      menu.classList.toggle('open', open);
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    }
+    menuBtn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+    menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+    // Link ativo na navegação
+    var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a.link'));
+    var map = {};
+    links.forEach(function (l) { map[l.getAttribute('href').slice(1)] = l; });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && map[en.target.id]) {
+            links.forEach(function (l) { l.removeAttribute('aria-current'); });
+            map[en.target.id].setAttribute('aria-current', 'true');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      Object.keys(map).forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) io.observe(el);
+      });
+    }
+
+    // Copiar e-mail
+    var copyBtn = document.getElementById('copyBtn');
+    var status = document.getElementById('copyStatus');
+    copyBtn.addEventListener('click', function () {
+      var mail = 'viniciushhardt@gmail.com';
+      var done = function () {
+        copyBtn.textContent = 'E-mail copiado';
+        status.textContent = 'E-mail copiado';
+        setTimeout(function () { copyBtn.textContent = 'Copiar e-mail'; }, 2500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(mail).then(done, function () { window.prompt('Copie o e-mail:', mail); });
+      } else {
+        window.prompt('Copie o e-mail:', mail);
+      }
+    });
+  })();
+</script>
 </body>
 </html>
