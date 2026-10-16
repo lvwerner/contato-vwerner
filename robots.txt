@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://contato-vwerner.vercel.app/sitemap.xml
